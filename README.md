@@ -127,4 +127,4 @@ npm run build
 npm run preview
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your web browser.
+Open [Working Simulation]( https://mukesh312009-ship-it.github.io/Hazardous_Rover/) in your web browser.
