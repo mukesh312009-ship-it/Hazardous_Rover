@@ -9,7 +9,8 @@ import {
   Settings, 
   PlayCircle, 
   FileText,
-  Radio
+  Radio,
+  Video
 } from 'lucide-react';
 import { SystemState } from '../types/telemetry';
 import { audioService } from '../services/audioService';
@@ -20,6 +21,7 @@ interface HeaderProps {
   onOpenArchitecture: () => void;
   onOpenSettings: () => void;
   onStartDemoTour: () => void;
+  onOpenCinematicDemo: () => void;
   onOpenSummary: () => void;
 }
 
@@ -29,6 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenArchitecture,
   onOpenSettings,
   onStartDemoTour,
+  onOpenCinematicDemo,
   onOpenSummary
 }) => {
   const [currentTime, setCurrentTime] = useState<string>('');
@@ -165,6 +168,19 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-slate-300">{currentTime}</span> UTC
             </div>
           </div>
+
+          {/* 3D Cinematic Demonstration Video Suite Button */}
+          <button
+            onClick={() => {
+              audioService.playClick();
+              onOpenCinematicDemo();
+            }}
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-md bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono text-xs font-bold shadow-md shadow-emerald-900/40 border border-emerald-400/50 transition-all hover:scale-[1.03] animate-pulse"
+            title="Launch Photorealistic 3D Cinematic Technology Demonstration Video (90–120s)"
+          >
+            <Video className="w-3.5 h-3.5 text-emerald-100" />
+            <span>3D VIDEO DEMO</span>
+          </button>
 
           {/* Judge Demo Presentation Tour Button */}
           <button

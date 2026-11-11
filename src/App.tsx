@@ -10,6 +10,7 @@ import { SystemArchitectureModal } from './components/SystemArchitectureModal';
 import { SettingsModal } from './components/SettingsModal';
 import { JudgeDemoTour } from './components/JudgeDemoTour';
 import { MissionSummaryModal } from './components/MissionSummaryModal';
+import { CinematicDemonstrator } from './components/CinematicDemonstrator';
 
 import { 
   SystemState, 
@@ -107,6 +108,7 @@ export const App: React.FC = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isDemoTourOpen, setIsDemoTourOpen] = useState<boolean>(false);
   const [isSummaryOpen, setIsSummaryOpen] = useState<boolean>(false);
+  const [isCinematicOpen, setIsCinematicOpen] = useState<boolean>(false);
 
   // Helper to log mission events
   const addMissionLog = useCallback((type: 'INFO' | 'ACTION' | 'HAZARD' | 'RETURN' | 'COLLISION' | 'AUTONOMOUS', description: string) => {
@@ -392,6 +394,7 @@ export const App: React.FC = () => {
         onOpenArchitecture={() => setIsArchOpen(true)}
         onOpenSettings={() => setIsSettingsOpen(true)}
         onStartDemoTour={() => setIsDemoTourOpen(true)}
+        onOpenCinematicDemo={() => setIsCinematicOpen(true)}
         onOpenSummary={() => setIsSummaryOpen(true)}
       />
 
@@ -528,6 +531,12 @@ export const App: React.FC = () => {
         telemetryHistory={telemetryHistory}
         alerts={alerts}
         missionLogs={missionLogs}
+      />
+
+      {/* 3D CINEMATIC TECHNOLOGY DEMONSTRATION VIDEO SUITE */}
+      <CinematicDemonstrator
+        isOpen={isCinematicOpen}
+        onClose={() => setIsCinematicOpen(false)}
       />
     </div>
   );
